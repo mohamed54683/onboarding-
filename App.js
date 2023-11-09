@@ -1,20 +1,48 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { Image } from 'react-native';
+import Onboarding from 'react-native-onboarding-swiper';
 
-export default function App() {
+const OnboardingScreen = ({ navigation }) => {
+  const onDone = () => {
+    // Handle what should happen after onboarding is done
+    navigation.navigate('App'); // for example, navigate to your main app screen
+  };
+
+  const pages = [
+    {
+      backgroundColor: '#056559',
+      image: <Image source={require('./assets/1.jpg')} />,
+      title: 'Welcome to Your App',
+      subtitle: 'This is a cool onboarding screen.',
+    },
+    {
+      backgroundColor: '#056559',
+      image: <Image source={require('./assets/1.jpg')} />,
+      title: 'Welcome to Your App',
+      subtitle: 'This is a cool onboarding screen.',
+    },
+    {
+      backgroundColor: '#01875f',
+      image: <Image source={require('./assets/2.jpg')} />,
+      title: 'Another Awesome Feature',
+      subtitle: 'Describe it here and make users excited.',
+    },
+    {
+      backgroundColor: '#01875f',
+      image: <Image source={require('./assets/2.jpg')} />,
+      title: 'Another Awesome Feature',
+      subtitle: 'Describe it here and make users excited.',
+    },
+    // Add more pages as needed
+  ];
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Onboarding
+      onDone={onDone}
+      pages={pages}
+      // You can customize further with props, check the documentation for options
+    />
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default OnboardingScreen;
